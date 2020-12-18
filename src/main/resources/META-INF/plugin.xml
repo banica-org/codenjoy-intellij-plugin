@@ -6,14 +6,10 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.stef2georg.codenjoyintellijplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.stef2georg.codenjoyintellijplugin.services.MyProjectService"/>
+        <moduleType id="CODENJOY_MODULE" implementationClass="com.github.stef2georg.codenjoyintellijplugin.CodenjoyModuleType"/>
+        <toolWindow id="Codenjoy" secondary="true" icon="AllIcons.Toolwindows.ToolWindowBuild" anchor="right" factoryClass="com.github.stef2georg.codenjoyintellijplugin.CodenjoyToolWindowFactory"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.stef2georg.codenjoyintellijplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
