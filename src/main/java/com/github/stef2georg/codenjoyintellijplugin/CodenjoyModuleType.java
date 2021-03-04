@@ -1,11 +1,9 @@
 package com.github.stef2georg.codenjoyintellijplugin;
 
 import com.intellij.icons.AllIcons;
-import com.intellij.ide.util.projectWizard.ModuleBuilder;
-import com.intellij.ide.util.projectWizard.ModuleWizardStep;
-import com.intellij.ide.util.projectWizard.ProjectWizardStepFactory;
-import com.intellij.ide.util.projectWizard.SettingsStep;
+import com.intellij.ide.util.projectWizard.*;
 import com.intellij.openapi.module.ModuleType;
+import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,5 +43,12 @@ public class CodenjoyModuleType extends ModuleType<CodenjoyModuleBuilder> {
     @Override
     public ModuleWizardStep modifyProjectTypeStep(@NotNull SettingsStep settingsStep, @NotNull final ModuleBuilder moduleBuilder) {
         return ProjectWizardStepFactory.getInstance().createJavaSettingsStep(settingsStep, moduleBuilder, moduleBuilder::isSuitableSdkType);
+    }
+
+    @Override
+    public ModuleWizardStep @NotNull [] createWizardSteps(@NotNull WizardContext wizardContext, @NotNull CodenjoyModuleBuilder moduleBuilder, @NotNull ModulesProvider modulesProvider) {
+        return new ModuleWizardStep[]{
+                new CodenjoyModuleWizardStep(moduleBuilder)
+        };
     }
 }

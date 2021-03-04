@@ -7,9 +7,10 @@
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.plugins.github</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <moduleType id="CODENJOY_MODULE" implementationClass="com.github.stef2georg.codenjoyintellijplugin.CodenjoyModuleType"/>
-        <toolWindow id="Codenjoy" secondary="true" icon="AllIcons.Toolwindows.ToolWindowBuild" anchor="right" factoryClass="com.github.stef2georg.codenjoyintellijplugin.CodenjoyToolWindowFactory"/>
+        <toolWindow id="Codenjoy" factoryClass="com.github.stef2georg.codenjoyintellijplugin.CodenjoyToolWindowFactory" icon="AllIcons.Toolwindows.ToolWindowBuild" anchor="right"/>
     </extensions>
 </idea-plugin>
